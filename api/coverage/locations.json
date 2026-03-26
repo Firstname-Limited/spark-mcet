@@ -7,10 +7,27 @@
     "outdoor_signal_class": "fair_4g",
     "indoor_signal_class": "variable",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "ASWD", "distance_km": 0.75, "bearing_deg": 315, "technology": "4G"},
-    "tower2": {"name": "AECR", "distance_km": 0.79, "bearing_deg": 45},
-    "tower3": {"name": "ABYC", "distance_km": 0.90, "bearing_deg": 60},
-    "nearest_5g_tower": {"name": "ABYC", "distance_km": 0.90, "bearing_deg": 60},
+    "nearest_tower": {
+      "name": "ASWD",
+      "distance_km": 0.75,
+      "bearing_deg": 315,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "AECR",
+      "distance_km": 0.79,
+      "bearing_deg": 45
+    },
+    "tower3": {
+      "name": "ABYC",
+      "distance_km": 0.9,
+      "bearing_deg": 60
+    },
+    "nearest_5g_tower": {
+      "name": "ABYC",
+      "distance_km": 0.9,
+      "bearing_deg": 60
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": true,
@@ -20,7 +37,7 @@
     "property_type": "residential_dwelling",
     "property_levels": 2,
     "cta_title": "Get the most from 5G at this address",
-    "cta_body": "A 5G plan with a compatible device would give you meaningfully better indoor signal here."
+    "cta_body": "A 5G plan with a compatible device would give you meaningfully better indoor signal here. Coverage is already close — your current setup may not be using it."
   },
   {
     "elid": "303371029",
@@ -30,9 +47,22 @@
     "outdoor_signal_class": "good_5g",
     "indoor_signal_class": "good",
     "in_5g_coverage": true,
-    "nearest_tower": {"name": "ALBT", "distance_km": 0.3, "bearing_deg": 180, "technology": "4G + 5G"},
-    "tower2": {"name": "AFAN", "distance_km": 0.5, "bearing_deg": 260},
-    "tower3": {"name": "ASKY", "distance_km": 0.7, "bearing_deg": 90},
+    "nearest_tower": {
+      "name": "ALBT",
+      "distance_km": 0.3,
+      "bearing_deg": 180,
+      "technology": "4G + 5G"
+    },
+    "tower2": {
+      "name": "AFAN",
+      "distance_km": 0.5,
+      "bearing_deg": 260
+    },
+    "tower3": {
+      "name": "ASKY",
+      "distance_km": 0.7,
+      "bearing_deg": 90
+    },
     "nearest_5g_tower": null,
     "active_outage": false,
     "outage_description": "",
@@ -53,10 +83,27 @@
     "outdoor_signal_class": "good_4g",
     "indoor_signal_class": "variable",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "ADEV", "distance_km": 0.6, "bearing_deg": 200, "technology": "4G"},
-    "tower2": {"name": "ADVS", "distance_km": 0.9, "bearing_deg": 140},
-    "tower3": {"name": "ASTB", "distance_km": 1.2, "bearing_deg": 310},
-    "nearest_5g_tower": {"name": "ADVS", "distance_km": 0.9, "bearing_deg": 140},
+    "nearest_tower": {
+      "name": "ADEV",
+      "distance_km": 0.6,
+      "bearing_deg": 200,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "ADVS",
+      "distance_km": 0.9,
+      "bearing_deg": 140
+    },
+    "tower3": {
+      "name": "ASTB",
+      "distance_km": 1.2,
+      "bearing_deg": 310
+    },
+    "nearest_5g_tower": {
+      "name": "ADVS",
+      "distance_km": 0.9,
+      "bearing_deg": 140
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": true,
@@ -66,7 +113,7 @@
     "property_type": "residential_dwelling",
     "property_levels": 1,
     "cta_title": "5G is coming to your area",
-    "cta_body": "Your outdoor signal is good on 4G today. A 5G upgrade is planned for the ADEV site within 6 months."
+    "cta_body": "Your outdoor signal is good on 4G today. A 5G upgrade is planned for the ADEV site within 6 months — worth considering a 5G plan ahead of that."
   },
   {
     "elid": "302987410",
@@ -76,10 +123,27 @@
     "outdoor_signal_class": "fair_4g",
     "indoor_signal_class": "variable",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "AMWS", "distance_km": 0.8, "bearing_deg": 30, "technology": "4G"},
-    "tower2": {"name": "ATKR", "distance_km": 1.1, "bearing_deg": 160},
-    "tower3": {"name": "AWAL", "distance_km": 1.4, "bearing_deg": 240},
-    "nearest_5g_tower": {"name": "AMWS", "distance_km": 0.8, "bearing_deg": 30},
+    "nearest_tower": {
+      "name": "AMWS",
+      "distance_km": 0.8,
+      "bearing_deg": 30,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "ATKR",
+      "distance_km": 1.1,
+      "bearing_deg": 160
+    },
+    "tower3": {
+      "name": "AWAL",
+      "distance_km": 1.4,
+      "bearing_deg": 240
+    },
+    "nearest_5g_tower": {
+      "name": "AMWS",
+      "distance_km": 0.8,
+      "bearing_deg": 30
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": true,
@@ -99,9 +163,22 @@
     "outdoor_signal_class": "good_5g",
     "indoor_signal_class": "good",
     "in_5g_coverage": true,
-    "nearest_tower": {"name": "MWAC", "distance_km": 0.4, "bearing_deg": 270, "technology": "4G + 5G"},
-    "tower2": {"name": "MWTP", "distance_km": 0.7, "bearing_deg": 10},
-    "tower3": {"name": "MLMG", "distance_km": 1.0, "bearing_deg": 190},
+    "nearest_tower": {
+      "name": "MWAC",
+      "distance_km": 0.4,
+      "bearing_deg": 270,
+      "technology": "4G + 5G"
+    },
+    "tower2": {
+      "name": "MWTP",
+      "distance_km": 0.7,
+      "bearing_deg": 10
+    },
+    "tower3": {
+      "name": "MLMG",
+      "distance_km": 1.0,
+      "bearing_deg": 190
+    },
     "nearest_5g_tower": null,
     "active_outage": false,
     "outage_description": "",
@@ -122,10 +199,27 @@
     "outdoor_signal_class": "fair_4g",
     "indoor_signal_class": "poor",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "WHOS", "distance_km": 1.0, "bearing_deg": 350, "technology": "4G"},
-    "tower2": {"name": "WMEL", "distance_km": 1.3, "bearing_deg": 80},
-    "tower3": {"name": "WALN", "distance_km": 1.6, "bearing_deg": 200},
-    "nearest_5g_tower": {"name": "WMEL", "distance_km": 1.3, "bearing_deg": 80},
+    "nearest_tower": {
+      "name": "WHOS",
+      "distance_km": 1.0,
+      "bearing_deg": 350,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "WMEL",
+      "distance_km": 1.3,
+      "bearing_deg": 80
+    },
+    "tower3": {
+      "name": "WALN",
+      "distance_km": 1.6,
+      "bearing_deg": 200
+    },
+    "nearest_5g_tower": {
+      "name": "WMEL",
+      "distance_km": 1.3,
+      "bearing_deg": 80
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": true,
@@ -135,7 +229,7 @@
     "property_type": "residential_dwelling",
     "property_levels": 2,
     "cta_title": "Improve your indoor signal at this address",
-    "cta_body": "Indoor signal is weak here. Wi-Fi calling is available on all Spark plans and uses your broadband connection for reliable indoor calls."
+    "cta_body": "Indoor signal is weak here — likely due to building materials. Wi-Fi calling is available on all Spark plans and uses your broadband connection for calls indoors."
   },
   {
     "elid": "300685623",
@@ -145,10 +239,27 @@
     "outdoor_signal_class": "variable",
     "indoor_signal_class": "poor",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "WKIL", "distance_km": 1.1, "bearing_deg": 120, "technology": "4G"},
-    "tower2": {"name": "WRGN", "distance_km": 1.4, "bearing_deg": 220},
-    "tower3": {"name": "WLYL", "distance_km": 1.8, "bearing_deg": 300},
-    "nearest_5g_tower": {"name": "WKIL", "distance_km": 1.1, "bearing_deg": 120},
+    "nearest_tower": {
+      "name": "WKIL",
+      "distance_km": 1.1,
+      "bearing_deg": 120,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "WRGN",
+      "distance_km": 1.4,
+      "bearing_deg": 220
+    },
+    "tower3": {
+      "name": "WLYL",
+      "distance_km": 1.8,
+      "bearing_deg": 300
+    },
+    "nearest_5g_tower": {
+      "name": "WKIL",
+      "distance_km": 1.1,
+      "bearing_deg": 120
+    },
     "active_outage": true,
     "outage_description": "A planned maintenance window on the WKIL site is currently affecting service in this area. Expected resolution by 6pm today.",
     "upgrade_planned": false,
@@ -168,10 +279,27 @@
     "outdoor_signal_class": "good_4g",
     "indoor_signal_class": "good",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "STOI", "distance_km": 0.5, "bearing_deg": 90, "technology": "4G"},
-    "tower2": {"name": "SNEA", "distance_km": 0.8, "bearing_deg": 340},
-    "tower3": {"name": "SNEL", "distance_km": 1.1, "bearing_deg": 180},
-    "nearest_5g_tower": {"name": "STOI", "distance_km": 0.5, "bearing_deg": 90},
+    "nearest_tower": {
+      "name": "STOI",
+      "distance_km": 0.5,
+      "bearing_deg": 90,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "SNEA",
+      "distance_km": 0.8,
+      "bearing_deg": 340
+    },
+    "tower3": {
+      "name": "SNEL",
+      "distance_km": 1.1,
+      "bearing_deg": 180
+    },
+    "nearest_5g_tower": {
+      "name": "STOI",
+      "distance_km": 0.5,
+      "bearing_deg": 90
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": true,
@@ -191,9 +319,22 @@
     "outdoor_signal_class": "good_5g",
     "indoor_signal_class": "good",
     "in_5g_coverage": true,
-    "nearest_tower": {"name": "SBRD", "distance_km": 0.35, "bearing_deg": 45, "technology": "4G + 5G"},
-    "tower2": {"name": "SUOC", "distance_km": 0.6, "bearing_deg": 290},
-    "tower3": {"name": "SNRD", "distance_km": 0.9, "bearing_deg": 160},
+    "nearest_tower": {
+      "name": "SBRD",
+      "distance_km": 0.35,
+      "bearing_deg": 45,
+      "technology": "4G + 5G"
+    },
+    "tower2": {
+      "name": "SUOC",
+      "distance_km": 0.6,
+      "bearing_deg": 290
+    },
+    "tower3": {
+      "name": "SNRD",
+      "distance_km": 0.9,
+      "bearing_deg": 160
+    },
     "nearest_5g_tower": null,
     "active_outage": false,
     "outage_description": "",
@@ -214,10 +355,27 @@
     "outdoor_signal_class": "variable",
     "indoor_signal_class": "poor",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "SAWM", "distance_km": 1.8, "bearing_deg": 270, "technology": "4G"},
-    "tower2": {"name": "SWAN", "distance_km": 2.1, "bearing_deg": 10},
-    "tower3": {"name": "SOMT", "distance_km": 2.8, "bearing_deg": 140},
-    "nearest_5g_tower": {"name": "SAWM", "distance_km": 1.8, "bearing_deg": 270},
+    "nearest_tower": {
+      "name": "SAWM",
+      "distance_km": 1.8,
+      "bearing_deg": 270,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "SWAN",
+      "distance_km": 2.1,
+      "bearing_deg": 10
+    },
+    "tower3": {
+      "name": "SOMT",
+      "distance_km": 2.8,
+      "bearing_deg": 140
+    },
+    "nearest_5g_tower": {
+      "name": "SAWM",
+      "distance_km": 1.8,
+      "bearing_deg": 270
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": false,
@@ -237,10 +395,27 @@
     "outdoor_signal_class": "fair_4g",
     "indoor_signal_class": "variable",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "SQTC", "distance_km": 0.7, "bearing_deg": 50, "technology": "4G"},
-    "tower2": {"name": "SQTH", "distance_km": 0.9, "bearing_deg": 180},
-    "tower3": {"name": "SKVH", "distance_km": 1.3, "bearing_deg": 280},
-    "nearest_5g_tower": {"name": "SQTC", "distance_km": 0.7, "bearing_deg": 50},
+    "nearest_tower": {
+      "name": "SQTC",
+      "distance_km": 0.7,
+      "bearing_deg": 50,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "SQTH",
+      "distance_km": 0.9,
+      "bearing_deg": 180
+    },
+    "tower3": {
+      "name": "SKVH",
+      "distance_km": 1.3,
+      "bearing_deg": 280
+    },
+    "nearest_5g_tower": {
+      "name": "SQTC",
+      "distance_km": 0.7,
+      "bearing_deg": 50
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": true,
@@ -260,9 +435,22 @@
     "outdoor_signal_class": "good_5g",
     "indoor_signal_class": "good",
     "in_5g_coverage": true,
-    "nearest_tower": {"name": "SRLW", "distance_km": 0.4, "bearing_deg": 220, "technology": "4G + 5G"},
-    "tower2": {"name": "SRIL", "distance_km": 0.7, "bearing_deg": 340},
-    "tower3": {"name": "SRLT", "distance_km": 1.0, "bearing_deg": 80},
+    "nearest_tower": {
+      "name": "SRLW",
+      "distance_km": 0.4,
+      "bearing_deg": 220,
+      "technology": "4G + 5G"
+    },
+    "tower2": {
+      "name": "SRIL",
+      "distance_km": 0.7,
+      "bearing_deg": 340
+    },
+    "tower3": {
+      "name": "SRLT",
+      "distance_km": 1.0,
+      "bearing_deg": 80
+    },
     "nearest_5g_tower": null,
     "active_outage": false,
     "outage_description": "",
@@ -283,9 +471,22 @@
     "outdoor_signal_class": "good_5g",
     "indoor_signal_class": "good",
     "in_5g_coverage": true,
-    "nearest_tower": {"name": "ALWC", "distance_km": 0.5, "bearing_deg": 110, "technology": "4G + 5G"},
-    "tower2": {"name": "AMNC", "distance_km": 0.7, "bearing_deg": 350},
-    "tower3": {"name": "AMNE", "distance_km": 1.0, "bearing_deg": 240},
+    "nearest_tower": {
+      "name": "ALWC",
+      "distance_km": 0.5,
+      "bearing_deg": 110,
+      "technology": "4G + 5G"
+    },
+    "tower2": {
+      "name": "AMNC",
+      "distance_km": 0.7,
+      "bearing_deg": 350
+    },
+    "tower3": {
+      "name": "AMNE",
+      "distance_km": 1.0,
+      "bearing_deg": 240
+    },
     "nearest_5g_tower": null,
     "active_outage": false,
     "outage_description": "",
@@ -296,7 +497,7 @@
     "property_type": "commercial",
     "property_levels": 1,
     "cta_title": "Great coverage in this area",
-    "cta_body": "This area has strong 5G coverage. Spark's network delivers reliable fast data throughout this location."
+    "cta_body": "This area has strong 5G coverage. Whether you're visiting or nearby, Spark's network delivers reliable fast data throughout this location."
   },
   {
     "elid": "AREA-003",
@@ -306,9 +507,22 @@
     "outdoor_signal_class": "good_5g",
     "indoor_signal_class": "good",
     "in_5g_coverage": true,
-    "nearest_tower": {"name": "MPKT", "distance_km": 0.3, "bearing_deg": 160, "technology": "4G + 5G"},
-    "tower2": {"name": "MPUN", "distance_km": 0.6, "bearing_deg": 280},
-    "tower3": {"name": "MMIS", "distance_km": 0.9, "bearing_deg": 40},
+    "nearest_tower": {
+      "name": "MPKT",
+      "distance_km": 0.3,
+      "bearing_deg": 160,
+      "technology": "4G + 5G"
+    },
+    "tower2": {
+      "name": "MPUN",
+      "distance_km": 0.6,
+      "bearing_deg": 280
+    },
+    "tower3": {
+      "name": "MMIS",
+      "distance_km": 0.9,
+      "bearing_deg": 40
+    },
     "nearest_5g_tower": null,
     "active_outage": false,
     "outage_description": "",
@@ -324,15 +538,32 @@
   {
     "elid": "AREA-004",
     "type": "area",
-    "display_name": "Hobbiton\u2122",
+    "display_name": "Hobbiton™",
     "display_sub": "Waikato",
     "outdoor_signal_class": "limited",
     "indoor_signal_class": "poor",
     "in_5g_coverage": false,
-    "nearest_tower": {"name": "MTUN", "distance_km": 10.2, "bearing_deg": 180, "technology": "4G"},
-    "tower2": {"name": "MWIT", "distance_km": 14.7, "bearing_deg": 290},
-    "tower3": {"name": "MTAH", "distance_km": 22.3, "bearing_deg": 60},
-    "nearest_5g_tower": {"name": "MTUN", "distance_km": 10.2, "bearing_deg": 180},
+    "nearest_tower": {
+      "name": "MTUN",
+      "distance_km": 10.2,
+      "bearing_deg": 180,
+      "technology": "4G"
+    },
+    "tower2": {
+      "name": "MWIT",
+      "distance_km": 14.7,
+      "bearing_deg": 290
+    },
+    "tower3": {
+      "name": "MTAH",
+      "distance_km": 22.3,
+      "bearing_deg": 60
+    },
+    "nearest_5g_tower": {
+      "name": "MTUN",
+      "distance_km": 10.2,
+      "bearing_deg": 180
+    },
     "active_outage": false,
     "outage_description": "",
     "upgrade_planned": false,
@@ -352,9 +583,22 @@
     "outdoor_signal_class": "good_5g",
     "indoor_signal_class": "good",
     "in_5g_coverage": true,
-    "nearest_tower": {"name": "ARDL", "distance_km": 0.5, "bearing_deg": 200, "technology": "4G + 5G"},
-    "tower2": {"name": "AGRV", "distance_km": 0.8, "bearing_deg": 320},
-    "tower3": {"name": "AABE", "distance_km": 1.1, "bearing_deg": 70},
+    "nearest_tower": {
+      "name": "ARDL",
+      "distance_km": 0.5,
+      "bearing_deg": 200,
+      "technology": "4G + 5G"
+    },
+    "tower2": {
+      "name": "AGRV",
+      "distance_km": 0.8,
+      "bearing_deg": 320
+    },
+    "tower3": {
+      "name": "AABE",
+      "distance_km": 1.1,
+      "bearing_deg": 70
+    },
     "nearest_5g_tower": null,
     "active_outage": false,
     "outage_description": "",
