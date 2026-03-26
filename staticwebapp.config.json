@@ -1,4 +1,32 @@
 {
-  "routes": [],
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/api/*"]
+  },
   "responseOverrides": {}
 }
+```
+
+Commit the change and wait for the green tick in Actions.
+
+Then try both URLs:
+
+The main site:
+```
+https://happy-water-076675510.1.azurestaticapps.net
+```
+
+The API test:
+```
+https://happy-water-076675510.1.azurestaticapps.net/api/coverage?elid=300882157
