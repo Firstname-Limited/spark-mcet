@@ -368,16 +368,3 @@
     "cta_body": "Rosedale Park has strong 5G coverage. A 5G plan gives you full access to the fast speeds already available throughout this area."
   }
 ]
-```
-
-Commit the file.
-
----
-
-## Step 4 — Add the main function code
-
-Click **Add file → Create new file**.
-
-Filename:
-```
-api/coverage/__init__.py
