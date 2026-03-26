@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark — Mobile Coverage Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --spark-purple: #5B2D8E;
+    --spark-purple-dark: #3D1E60;
+    --spark-purple-light: #EDE8F5;
+    --spark-purple-mid: #7B4BB5;
+    --white: #FFFFFF;
+    --grey-50: #F8F7FA;
+    --grey-100: #F0EEF5;
+    --grey-200: #E2DFF0;
+    --grey-300: #C8C4D8;
+    --grey-500: #7A7590;
+    --grey-700: #3D3850;
+    --grey-900: #1A1628;
+    --green: #0F7B4A;
+    --green-bg: #E6F5EE;
+    --amber: #8A5A00;
+    --amber-bg: #FFF3D6;
+    --red: #B22020;
+    --red-bg: #FDEAEA;
+    --blue: #1050A0;
+    --blue-bg: #E6EFFA;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--grey-50);
+    color: var(--grey-900);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--spark-purple-dark);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    gap: 32px;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-logo-mark svg { width: 18px; height: 18px; }
+  .nav-links { display: flex; gap: 24px; margin-left: auto; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 400; transition: color 0.15s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: rgba(255,255,255,0.15); color: #fff !important; padding: 6px 14px; border-radius: 20px; font-weight: 500 !important; }
+
+  /* ── HERO STRIP ── */
+  .hero {
+    background: var(--spark-purple);
+    padding: 28px 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 960px; margin: 0 auto; }
+  .hero h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .hero p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 20px;
+  }
+
+  /* ── SEARCH BAR ── */
+  .search-wrap {
+    background: var(--spark-purple);
+    padding: 0 32px 24px;
+  }
+  .search-inner { max-width: 960px; margin: 0 auto; }
+  .search-row {
+    display: flex;
+    gap: 8px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 6px 6px 6px 16px;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .search-icon { color: var(--grey-300); flex-shrink: 0; }
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--grey-900);
+    background: transparent;
+  }
+  .search-input::placeholder { color: var(--grey-300); }
+  .search-btn {
+    background: var(--spark-purple);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .search-btn:hover { background: var(--spark-purple-dark); }
+  .search-hint { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 8px; }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 960px; margin: 0 auto; padding: 20px 32px 40px; display: grid; grid-template-columns: 1fr 300px; gap: 16px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: #fff;
+    border: 1px solid var(--grey-200);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .card-pad { padding: 18px 20px; }
+
+  /* ── MAP ── */
+  .map-area {
+    height: 230px;
+    background: #D6CBE8;
+    position: relative;
+    overflow: hidden;
+  }
+  .map-svg { width: 100%; height: 100%; }
+  .map-badge {
+    position: absolute;
+    bottom: 10px; left: 10px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--grey-700);
+    border: 1px solid var(--grey-200);
+  }
+  .map-toggle {
+    position: absolute;
+    top: 10px; right: 10px;
+    display: flex;
+    background: rgba(255,255,255,0.92);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--grey-200);
+    font-size: 11px;
+  }
+  .map-toggle button {
+    border: none; background: transparent; padding: 4px 10px;
+    font-family: var(--font); font-size: 11px; cursor: pointer;
+    color: var(--grey-500);
+  }
+  .map-toggle button.active { background: var(--spark-purple); color: #fff; font-weight: 500; }
+
+  /* ── SIGNAL PILLS ── */
+  .signal-row { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--grey-100); }
+  .spill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500;
+  }
+  .spill-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .spill-amber { background: var(--amber-bg); color: var(--amber); }
+  .spill-amber .spill-dot { background: var(--amber); }
+  .spill-red { background: var(--red-bg); color: var(--red); }
+  .spill-red .spill-dot { background: var(--red); }
+  .spill-green { background: var(--green-bg); color: var(--green); }
+  .spill-green .spill-dot { background: var(--green); }
+
+  /* ── NARRATIVE ── */
+  .narrative-wrap { padding: 16px 20px; border-bottom: 1px solid var(--grey-100); }
+  .narrative-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 8px; }
+  .narrative-text {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--grey-700);
+    border-left: 3px solid var(--spark-purple);
+    padding-left: 14px;
+  }
+  .narrative-text strong { color: var(--grey-900); font-weight: 500; }
+
+  /* ── DETAIL GRID ── */
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--grey-100); border-top: 1px solid var(--grey-100); }
+  .detail-cell { background: #fff; padding: 13px 18px; }
+  .detail-cell-label { font-size: 11px; color: var(--grey-500); margin-bottom: 3px; }
+  .detail-cell-value { font-size: 13px; font-weight: 500; color: var(--grey-900); }
+  .val-amber { color: var(--amber); }
+  .val-red { color: var(--red); }
+  .val-green { color: var(--green); }
+
+  /* ── FEEDBACK ── */
+  .feedback-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 18px;
+    border-top: 1px solid var(--grey-100);
+    background: var(--grey-50);
+  }
+  .feedback-label { font-size: 12px; color: var(--grey-500); flex: 1; }
+  .thumb-btn {
+    background: #fff; border: 1px solid var(--grey-200);
+    border-radius: 6px; padding: 5px 12px; font-size: 13px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .thumb-btn:hover { border-color: var(--spark-purple); background: var(--spark-purple-light); }
+  .thumb-btn.active { background: var(--spark-purple); color: #fff; border-color: var(--spark-purple); }
+
+  /* ── RIGHT COLUMN ── */
+  .right-col { display: flex; flex-direction: column; gap: 12px; }
+
+  /* ── CTA BOX ── */
+  .cta-card {
+    background: var(--spark-purple);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .cta-card h3 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; letter-spacing: -0.01em; }
+  .cta-card p { font-size: 12px; color: rgba(255,255,255,0.72); line-height: 1.5; margin-bottom: 14px; }
+  .cta-btn {
+    display: block; width: 100%;
+    background: #fff; color: var(--spark-purple);
+    border: none; border-radius: 8px;
+    padding: 10px 16px; font-family: var(--font); font-size: 13px; font-weight: 600;
+    cursor: pointer; text-align: center; transition: all 0.15s;
+  }
+  .cta-btn:hover { background: var(--spark-purple-light); }
+
+  /* ── UPGRADE NOTICE ── */
+  .upgrade-card {
+    background: var(--blue-bg);
+    border: 1px solid #B8D0F5;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .upgrade-card h4 { font-size: 12px; font-weight: 600; color: var(--blue); margin-bottom: 4px; }
+  .upgrade-card p { font-size: 12px; color: #3060A0; line-height: 1.5; }
+
+  /* ── OUTAGE CHIP ── */
+  .outage-chip {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--green-bg); border: 1px solid #A8DFC0;
+    border-radius: 10px; padding: 10px 14px;
+  }
+  .outage-dot-outer {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #A8DFC0; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .outage-dot-inner { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+  .outage-chip span { font-size: 12px; color: var(--green); font-weight: 500; }
+
+  /* ── DEVICE CHECK ── */
+  .device-card .card-pad { padding: 16px 18px; }
+  .section-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--grey-500); margin-bottom: 10px;
+  }
+  .device-select {
+    width: 100%; padding: 9px 12px;
+    border: 1px solid var(--grey-200); border-radius: 8px;
+    font-family: var(--font); font-size: 13px; color: var(--grey-900);
+    background: #fff; cursor: pointer; margin-bottom: 8px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7590' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+  .device-select:focus { outline: none; border-color: var(--spark-purple); }
+  .device-result {
+    display: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .device-result.show { display: block; }
+  .device-result.compatible { background: var(--green-bg); color: var(--green); border: 1px solid #A8DFC0; }
+  .device-result.not-compatible { background: var(--amber-bg); color: var(--amber); border: 1px solid #E8C870; }
+  .secondary-btn {
+    display: block; width: 100%;
+    background: #fff; color: var(--spark-purple);
+    border: 1px solid var(--grey-200); border-radius: 8px;
+    padding: 9px 16px; font-family: var(--font); font-size: 12px; font-weight: 500;
+    cursor: pointer; text-align: center; transition: all 0.15s;
+  }
+  .secondary-btn:hover { border-color: var(--spark-purple); background: var(--spark-purple-light); }
+
+  /* ── NOT ON SPARK ── */
+  .compare-card .card-pad { padding: 16px 18px; }
+  .compare-card p { font-size: 12px; color: var(--grey-500); line-height: 1.5; margin-bottom: 10px; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer { max-width: 960px; margin: 0 auto; padding: 0 32px 32px; }
+  .disclaimer p { font-size: 11px; color: var(--grey-300); line-height: 1.6; }
+
+  /* ── LOADING STATE ── */
+  .loading { display: none; }
+  .loading.show { display: flex; align-items: center; gap: 10px; padding: 20px; }
+  .spinner {
+    width: 18px; height: 18px;
+    border: 2px solid var(--grey-200);
+    border-top-color: var(--spark-purple);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text { font-size: 13px; color: var(--grey-500); }
+
+  .result-section { display: none; }
+  .result-section.show { display: contents; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .main { grid-template-columns: 1fr; padding: 16px; }
+    .right-col { order: -1; }
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 18 18" fill="none">
+        <path d="M9 2L16 14H2L9 2Z" fill="#5B2D8E"/>
+        <circle cx="9" cy="11" r="3" fill="#fff"/>
+      </svg>
+    </div>
+    Spark
+  </a>
+  <div class="nav-links">
+    <a href="#">Plans</a>
+    <a href="#">Devices</a>
+    <a href="#">Help</a>
+    <a href="#" class="nav-cta">My Spark</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Mobile coverage checker</h1>
+    <p>Enter any New Zealand address to understand your coverage, why it's that way, and what you can do about it.</p>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-inner">
+    <div class="search-row">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="7" cy="7" r="5" stroke="#C8C4D8" stroke-width="1.5"/>
+        <path d="M11 11l3 3" stroke="#C8C4D8" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input class="search-input" id="addressInput" type="text" placeholder="Enter an address, e.g. 25 King Richard Place, Browns Bay" value="25 King Richard Place, Browns Bay, Auckland 0630" />
+      <button class="search-btn" onclick="runSearch()">Check coverage</button>
+    </div>
+    <p class="search-hint">Or <a href="#" style="color:rgba(255,255,255,0.6)">use my current location</a></p>
+  </div>
+</div>
+
+<div class="main" id="mainContent">
+
+  <div>
+    <div class="card" id="resultCard">
+
+      <div class="loading" id="loadingState">
+        <div class="spinner"></div>
+        <span class="loading-text">Analysing coverage at this address…</span>
+      </div>
+
+      <div class="result-section" id="resultSection">
+
+        <!-- Map -->
+        <div class="map-area">
+          <svg class="map-svg" viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg">
+            <!-- Base roads -->
+            <rect width="640" height="230" fill="#D9D0E8"/>
+            <!-- Coverage zones -->
+            <rect x="0" y="0" width="640" height="230" fill="#B89FD4" opacity="0.5"/>
+            <rect x="80" y="30" width="320" height="170" rx="4" fill="#8B6EC0" opacity="0.6"/>
+            <rect x="320" y="20" width="200" height="130" rx="4" fill="#50C090" opacity="0.45"/>
+            <rect x="460" y="100" width="140" height="110" rx="4" fill="#A8D0A8" opacity="0.4"/>
+            <!-- Roads -->
+            <path d="M0 115 L640 115" stroke="white" stroke-width="10" opacity="0.5"/>
+            <path d="M0 80 L640 80" stroke="white" stroke-width="6" opacity="0.3"/>
+            <path d="M200 0 L200 230" stroke="white" stroke-width="8" opacity="0.4"/>
+            <path d="M420 0 L420 230" stroke="white" stroke-width="5" opacity="0.3"/>
+            <path d="M50 0 L50 230" stroke="white" stroke-width="4" opacity="0.25"/>
+            <!-- Location pin -->
+            <circle cx="260" cy="118" r="14" fill="white" opacity="0.9"/>
+            <circle cx="260" cy="118" r="10" fill="#5B2D8E"/>
+            <circle cx="260" cy="118" r="5" fill="white"/>
+            <!-- Tower markers -->
+            <rect x="186" y="72" width="8" height="8" rx="2" fill="#3D1E60" opacity="0.7"/>
+            <rect x="390" y="42" width="8" height="8" rx="2" fill="#3D1E60" opacity="0.7"/>
+            <rect x="490" y="130" width="8" height="8" rx="2" fill="#3D1E60" opacity="0.7"/>
+          </svg>
+          <div class="map-badge">Spark 4G · 5G coverage</div>
+          <div class="map-toggle">
+            <button class="active" onclick="setMapLayer(this,'4G')">4G</button>
+            <button onclick="setMapLayer(this,'5G')">5G</button>
+          </div>
+        </div>
+
+        <!-- Signal pills -->
+        <div class="signal-row">
+          <span class="spill spill-amber"><span class="spill-dot"></span>4G fair outdoor</span>
+          <span class="spill spill-red"><span class="spill-dot"></span>Variable in-home</span>
+          <span class="spill spill-green"><span class="spill-dot"></span>5G available nearby</span>
+        </div>
+
+        <!-- Narrative -->
+        <div class="narrative-wrap">
+          <div class="narrative-label">Coverage summary</div>
+          <p class="narrative-text" id="narrativeText">
+            Your address has <strong>fair 4G outdoor signal</strong> — reliable enough for calls and mobile browsing when you're outside. Indoors is where it gets more complicated: signal strength drops to variable, which is likely due to building materials in this area reducing penetration from the nearest site. The good news is that the <strong>ABYC site 0.9 km away</strong> recently had its 5G activated, and the Browns Bay cell at 0.79 km is your strongest current connection. With a 5G-capable device on a 5G plan, your indoor experience should improve noticeably.
+          </p>
+        </div>
+
+        <!-- Detail grid -->
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="detail-cell-label">Outdoor signal</div>
+            <div class="detail-cell-value val-amber">Fair 4G</div>
+          </div>
+          <div class="detail-cell">
+            <div class="detail-cell-label">In-home signal</div>
+            <div class="detail-cell-value val-red">Variable</div>
+          </div>
+          <div class="detail-cell">
+            <div class="detail-cell-label">Nearest site</div>
+            <div class="detail-cell-value">ASWD — 0.75 km</div>
+          </div>
+          <div class="detail-cell">
+            <div class="detail-cell-label">Site technology</div>
+            <div class="detail-cell-value">4G active</div>
+          </div>
+          <div class="detail-cell">
+            <div class="detail-cell-label">Active outages</div>
+            <div class="detail-cell-value val-green">None</div>
+          </div>
+          <div class="detail-cell">
+            <div class="detail-cell-label">5G site nearby</div>
+            <div class="detail-cell-value val-green">ABYC — 0.9 km</div>
+          </div>
+        </div>
+
+        <!-- Feedback -->
+        <div class="feedback-row">
+          <span class="feedback-label">Was this helpful?</span>
+          <button class="thumb-btn" id="thumbUp" onclick="thumbRate('up')">👍 Yes</button>
+          <button class="thumb-btn" id="thumbDown" onclick="thumbRate('down')">👎 No</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column -->
+  <div class="right-col">
+
+    <div class="cta-card">
+      <h3>Get the most from 5G at this address</h3>
+      <p>A 5G plan with a compatible device would meaningfully improve your indoor signal here.</p>
+      <button class="cta-btn">See 5G plans →</button>
+    </div>
+
+    <div class="upgrade-card">
+      <h4>Network upgrade nearby</h4>
+      <p>The AECR site 0.79 km away is being reviewed for a 5G upgrade. Register your interest and we'll let you know when it goes live.</p>
+    </div>
+
+    <div class="outage-chip">
+      <div class="outage-dot-outer"><div class="outage-dot-inner"></div></div>
+      <span>No active outages in your area</span>
+    </div>
+
+    <div class="card device-card">
+      <div class="card-pad">
+        <div class="section-label">Is your device 5G-ready?</div>
+        <select class="device-select" id="deviceSelect" onchange="checkDevice(this.value)">
+          <option value="">Select your phone model…</option>
+          <optgroup label="Apple">
+            <option value="iphone16_5g">iPhone 16 / 16 Pro</option>
+            <option value="iphone15_5g">iPhone 15 / 15 Pro</option>
+            <option value="iphone14_5g">iPhone 14 / 14 Pro</option>
+            <option value="iphone13_5g">iPhone 13 / 13 Pro</option>
+            <option value="iphone12_5g">iPhone 12</option>
+            <option value="iphone11_4g">iPhone 11</option>
+            <option value="iphonex_4g">iPhone X / XR / XS</option>
+          </optgroup>
+          <optgroup label="Samsung">
+            <option value="s25_5g">Galaxy S25 / S25+</option>
+            <option value="s24_5g">Galaxy S24 / S24+</option>
+            <option value="s23_5g">Galaxy S23 / S23+</option>
+            <option value="a55_5g">Galaxy A55 5G</option>
+            <option value="a35_5g">Galaxy A35 5G</option>
+            <option value="a15_4g">Galaxy A15 (4G)</option>
+          </optgroup>
+          <optgroup label="Google">
+            <option value="pixel9_5g">Pixel 9 / 9 Pro</option>
+            <option value="pixel8_5g">Pixel 8 / 8a</option>
+            <option value="pixel7_5g">Pixel 7 / 7a</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="other_5g">Other 5G-capable device</option>
+            <option value="other_4g">Older / 4G-only device</option>
+          </optgroup>
+        </select>
+        <div class="device-result" id="deviceResult"></div>
+        <button class="secondary-btn" onclick="showPlans()">View compatible plans →</button>
+      </div>
+    </div>
+
+    <div class="card compare-card">
+      <div class="card-pad">
+        <div class="section-label">Considering Spark?</div>
+        <p>See exactly what you'd get at this address before you switch — no obligation.</p>
+        <button class="secondary-btn">Compare to your current provider →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p>Coverage predictions are based on outdoor signal modelling and real-world network data. Indoor coverage may vary based on building construction, materials, and location within the property. Coverage predictions should be used as a guide only. Signal availability is not guaranteed. Active outage information is updated every 15 minutes.</p>
+</div>
+
+<script>
+  const addresses = {
+    default: {
+      outdoor: 'Fair 4G',
+      indoor: 'Variable',
+      nearestSite: 'ASWD — 0.75 km',
+      siteTech: '4G active',
+      outage: 'None',
+      nearby5g: 'ABYC — 0.9 km',
+      narrative: 'Your address has <strong>fair 4G outdoor signal</strong> — reliable enough for calls and mobile browsing when you\'re outside. Indoors is where it gets more complicated: signal strength drops to variable, which is likely due to building materials reducing penetration from the nearest site. The good news is that the <strong>ABYC site 0.9 km away</strong> has recently had 5G activated. With a 5G-capable device on a 5G plan, your indoor experience should improve noticeably.',
+      pillOutdoor: 'amber', pillIndoor: 'red', pill5g: 'green',
+      cta: 'Get the most from 5G at this address'
+    },
+    rosedale: {
+      outdoor: 'Good 5G',
+      indoor: 'Good in-home',
+      nearestSite: 'Rosedale Park — 0.5 km',
+      siteTech: '4G + 5G active',
+      outage: 'None',
+      nearby5g: 'Active at this site',
+      narrative: 'Great news — your address sits within <strong>good 5G coverage</strong>, both outdoors and indoors. The Rosedale Park site 0.5 km away has full 5G capability active. You\'re well-positioned to take advantage of Spark\'s fastest network. If you\'re on an older plan or device, now is a good time to upgrade and unlock the speeds already available at your address.',
+      pillOutdoor: 'green', pillIndoor: 'green', pill5g: 'green',
+      cta: 'You\'re in a great 5G area — upgrade your plan'
+    }
+  };
+
+  function runSearch() {
+    const addr = document.getElementById('addressInput').value.toLowerCase();
+    const loading = document.getElementById('loadingState');
+    const result = document.getElementById('resultSection');
+
+    loading.classList.add('show');
+    result.classList.remove('show');
+
+    setTimeout(() => {
+      loading.classList.remove('show');
+      result.classList.add('show');
+
+      const data = addr.includes('rosedale') ? addresses.rosedale : addresses.default;
+      applyData(data);
+    }, 1400);
+  }
+
+  function applyData(d) {
+    document.getElementById('narrativeText').innerHTML = d.narrative;
+    const cells = document.querySelectorAll('.detail-cell-value');
+    const vals = [d.outdoor, d.indoor, d.nearestSite, d.siteTech, d.outage, d.nearby5g];
+    const colours = [
+      d.pillOutdoor === 'green' ? 'val-green' : d.pillOutdoor === 'red' ? 'val-red' : 'val-amber',
+      d.pillIndoor === 'green' ? 'val-green' : d.pillIndoor === 'red' ? 'val-red' : 'val-amber',
+      '', '', 'val-green', 'val-green'
+    ];
+    cells.forEach((c, i) => {
+      c.textContent = vals[i];
+      c.className = 'detail-cell-value ' + (colours[i] || '');
+    });
+
+    const pills = document.querySelectorAll('.spill');
+    const pillMap = [
+      { text: d.outdoor + ' outdoor', cls: 'spill-' + d.pillOutdoor },
+      { text: 'Variable in-home', cls: 'spill-' + d.pillIndoor },
+      { text: '5G available nearby', cls: 'spill-green' }
+    ];
+    pills.forEach((p, i) => {
+      p.className = 'spill ' + pillMap[i].cls;
+      p.childNodes[1].textContent = pillMap[i].text;
+    });
+
+    document.querySelector('.cta-card h3').textContent = d.cta;
+  }
+
+  function setMapLayer(btn, layer) {
+    document.querySelectorAll('.map-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function checkDevice(val) {
+    const el = document.getElementById('deviceResult');
+    if (!val) { el.className = 'device-result'; return; }
+    if (val.includes('5g')) {
+      el.className = 'device-result compatible show';
+      el.innerHTML = '<strong>5G compatible.</strong> Your device supports 5G and can connect to the nearby ABYC site. A 5G plan would unlock faster speeds at this address.';
+    } else if (val.includes('4g')) {
+      el.className = 'device-result not-compatible show';
+      el.innerHTML = '<strong>4G only.</strong> Your device doesn\'t support 5G. To benefit from the 5G coverage available near your address, you\'d need to upgrade your handset.';
+    }
+  }
+
+  function showPlans() {
+    alert('This would navigate to the Spark plans page filtered for 5G.');
+  }
+
+  function thumbRate(dir) {
+    document.getElementById('thumbUp').classList.toggle('active', dir === 'up');
+    document.getElementById('thumbDown').classList.toggle('active', dir === 'down');
+  }
+
+  document.getElementById('addressInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') runSearch();
+  });
+
+  document.getElementById('resultSection').classList.add('show');
+</script>
+
+</body>
+</html>
