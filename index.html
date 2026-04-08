@@ -761,12 +761,15 @@ function generateMapBoth(outdoor, indoor, towers, in5g, fg) {
     <line x1="${cx-60}" y1="0" x2="${cx-60}" y2="260" stroke="white" stroke-width="7" opacity="0.25"/>
     <line x1="${cx+90}" y1="0" x2="${cx+90}" y2="260" stroke="white" stroke-width="4" opacity="0.18"/>`;
 
+  const legend5g = in5g ? `<rect x="75" y="230" width="10" height="10" rx="2" fill="#1D9E75" opacity="0.8"/>
+    <text x="89" y="240" font-family="system-ui,sans-serif" font-size="10" fill="#0F6E56" opacity="0.8">5G zone</text>` : '';
+  const legendCellX = in5g ? 142 : 75;
+  const legendCellTX = in5g ? 156 : 89;
   const legend = `<rect x="8" y="230" width="10" height="10" rx="2" fill="#9B72CC" opacity="0.8"/>
     <text x="22" y="240" font-family="system-ui,sans-serif" font-size="10" fill="#3D1E60" opacity="0.8">4G zone</text>
-    <rect x="75" y="230" width="10" height="10" rx="2" fill="#1D9E75" opacity="0.8"/>
-    <text x="89" y="240" font-family="system-ui,sans-serif" font-size="10" fill="#0F6E56" opacity="0.8">5G zone</text>
-    <rect x="142" y="230" width="10" height="10" rx="2" fill="#3D1E60" opacity="0.7"/>
-    <text x="156" y="240" font-family="system-ui,sans-serif" font-size="10" fill="#3D1E60" opacity="0.8">Cell site</text>`;
+    ${legend5g}
+    <rect x="${legendCellX}" y="230" width="10" height="10" rx="2" fill="#3D1E60" opacity="0.7"/>
+    <text x="${legendCellTX}" y="240" font-family="system-ui,sans-serif" font-size="10" fill="#3D1E60" opacity="0.8">Cell site</text>`;
 
   return `<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
     <rect width="400" height="260" fill="#D4C8E8"/>
